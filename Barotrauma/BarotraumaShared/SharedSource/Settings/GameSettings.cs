@@ -315,6 +315,7 @@ namespace Barotrauma
                         { InputType.ChatBox, Keys.B }, 
 
                         { InputType.Voice, Keys.V },
+                        { InputType.EnableMulticast, Keys.NumPad9 },
                         { InputType.RadioVoice, Keys.None },
                         { InputType.LocalVoice, Keys.None },
                         { InputType.ToggleChatMode, Keys.R },

@@ -119,8 +119,8 @@ namespace Barotrauma.Networking
                     var messageType = 
                         !client.VoipQueue.ForceLocal && 
                         ChatMessage.CanUseRadio(client.Character, out senderRadio) && 
-                        ChatMessage.CanUseRadio(Character.Controlled, out var recipientRadio) && 
-                        senderRadio.CanReceive(recipientRadio) ? 
+                        ChatMessage.CanUseRadio(Character.Controlled, out var recipientRadio) &&
+                        recipientRadio.CanReceive(senderRadio, true) ?
                             ChatMessageType.Radio : ChatMessageType.Default;
                     client.Character.ShowSpeechBubble(1.25f, ChatMessage.MessageColor[(int)messageType]);
 

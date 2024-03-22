@@ -89,6 +89,12 @@ namespace Barotrauma.Items.Components
             set;
         }
 
+        public bool multicastEnabled
+        {
+            get;
+            set;
+        }
+
         private float jamTimer;
         public float JamTimer
         {
@@ -160,9 +166,9 @@ namespace Barotrauma.Items.Components
             return list.Where(w => w != this && w.CanReceive(this));
         }
 
-        public bool CanReceive(WifiComponent sender)
+        public bool CanReceive(WifiComponent sender, bool isVoip = false)
         {
-            if (sender == null || sender.channel != channel) { return false; }
+            if (sender == null  || ((!isVoip && sender.channel != channel) || (isVoip &&  !multicastEnabled)) ) { return false; }
             if (sender.TeamID != TeamID && !AllowCrossTeamCommunication) { return false; }
             if (jamTimer > 0) { return false; }
 
